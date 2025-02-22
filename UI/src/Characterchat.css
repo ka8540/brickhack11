@@ -1,0 +1,350 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #fff; 
+    overflow: hidden; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #6b4ae3;
+}
+
+.header {
+    width: 100%;
+    background-color: #fff; 
+    color: #000; 
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    top: 0;
+    z-index: 1;
+}
+
+.title {
+    margin: 0;
+    font-size: 2em;
+    font-family: "Orbitron", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.menu-button {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    position: absolute;
+    left: 1em;
+}
+
+.sidebar {
+    width: 170px;
+    background-color: #fff;
+    color: #000;
+    padding: 1em;
+    position: fixed; 
+    top: 0; 
+    left: 0; /* Initially hide the sidebar */
+    height: 100vh; /* Full vertical height */
+    transition: transform 0.3s ease; /* Smooth transition for the sidebar */
+    transform: translateX(-100%); /* Hide the sidebar initially */
+    z-index: 0; /* Ensure the sidebar is below the header */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 1em 0;
+    cursor: pointer;
+}
+
+.sidebar.open {
+    transform: translateX(0); 
+}
+
+.character-creation-form {
+    width: 65%; 
+    height: 80vh; 
+    margin: auto;
+    margin-top: 6%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 20px; 
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+    z-index: 3;
+    
+}
+
+.character-creation-form label {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+}
+
+.character-creation-form input,
+.character-creation-form select,
+.character-creation-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.character-creation-form button {
+    padding: 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+.image-selection {
+    margin-top: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-item {
+    margin: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.image-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.image-item.selected {
+    border-color: #007bff;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    
+}
+
+.chat-history {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    
+}
+
+.chat-message {
+    display: flex;
+    align-items: center; /* Center align both image/initial and message */
+    margin: 10px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.chat-message.user {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.chat-message.character {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.chat-message p {
+    background-color: #e24eff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+}
+
+.chat-message.user p {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.chat-message.character .profile-pic,
+.chat-message.character .profile-initials {
+    margin-right: 10px;
+}
+
+.chat-message.user .profile-pic,
+.chat-message.user .profile-initials {
+    margin-left: 10px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+.chat-input-form {
+    position: relative;
+    width: 100%;
+}
+
+.chat-input-form input {
+    width: 100%;
+    padding: 15px;
+    padding-right: 50px; /* Add space for the button */
+    border: 1px solid #000;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.chat-input-form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.chat-input-form button {
+    position: absolute;
+    right: 10px;
+    top: 10%; 
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.chat-input-form button:disabled {
+    cursor: not-allowed;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+.dropdown-header{
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 40px;
+    position: relative;
+    top: 20px;
+    right: 20px;
+    text-align: center;
+    align-items: center;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.dropdown-header:hover{
+    background-color: #dbd9d9;
+}
+
+.dropdown-header.selected{
+    background: linear-gradient(to right, #b8a9f4, #8064e7);
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    right: 20px;
+    text-align: center;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.dropdown-content > div {
+    font-size: 0.95em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px; 
+    padding: 5px 10px; 
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    cursor: pointer;
+    width: 90%; 
+}
+
+
+.dropdown-content > div:hover {
+    background-color: #dbd9d9; 
+}
+
+.dropdown-header span{
+    margin-right: 10px;
+}
